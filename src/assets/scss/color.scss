@@ -1,0 +1,15 @@
+/*主题色*/
+$theme_color: #0865FF;
+
+/** 按钮背景色 */
+$btn: $theme_color;
+
+/* 边框样式 */
+$border: 1px solid #c4cbdd;
+$border_active: 1px solid $theme_color;
+
+/* txt 文本颜色 */
+$txt-color: #8792b1;
+
+// 表格选中/激活时颜色
+$table_active_color: #A0C5E8
