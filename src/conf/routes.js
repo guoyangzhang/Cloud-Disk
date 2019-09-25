@@ -22,6 +22,21 @@ export default [
         'label': '网络通信测试'
     },
     {
+        'path': 'treeDemo',
+        'component': 'treeDemo/index',
+        'label': '拖拽实现文件夹上传'
+    },
+    {
+        'path': 'test',
+        'component': 'test/patrol-list.html',
+        'label': '拖拽实现文件夹上传'
+    },
+    {
+        'path': 'bottomUpload',
+        'component': 'bottomUpload/index',
+        'label': '点击按钮上传'
+    },
+    {
         'path': 'testParent',
         'component': 'testParent/index',
         'label': '测试父子组件'

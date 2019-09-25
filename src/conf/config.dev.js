@@ -8,7 +8,7 @@ module.exports = {
     //     // 定义一个server
     //     {
     //         location: '/group1',
-    //         proxy_pass: 'http://10.37.61.64:8083' // 泰州
+    //         proxy_pass: 'http://10.37.61.64:8083' //
     //     }
     // ],
 
@@ -29,8 +29,6 @@ module.exports = {
 
     // 后端服务器
     endServers: {
-        default: 'http://localhost:8080/appName', // 本地 打开本地  ``` node ./server/app.js ``` 启动
-        wp: 'http://10.37.61.147:8003/wp/', // 平台门户登录模拟
-        uc: 'http://10.37.61.147:8001/uc'   // UC模拟单点并获取用户信息
+        default: 'http://localhost:7075/service-B', // 本地 打开本地  ``` node ./server/app.js ``` 启动
     }
 };

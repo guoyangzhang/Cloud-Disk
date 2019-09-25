@@ -40,7 +40,7 @@ module.exports = {
             title: 'Index Page',
             // 在这个页面中包含的块，默认情况下会包含
             // 提取出来的通用 chunk 和 vendor chunk。
-            chunks: ['chunk-vendors', 'chunk-common', 'index']
+            chunks: ['chunk-vendors', 'chunk-common', 'index'],
         },
         // 当使用只有入口的字符串格式时，
         // 模板会被推导为 `public/subpage.html`
@@ -89,8 +89,8 @@ module.exports = {
         //向 CSS 相关的 loader 传递选项(支持 css-loader postcss-loader sass-loader less-loader stylus-loader)
         loaderOptions: {
             css: {},
-            less: {}
-        }
+            less: {},
+        },
     },
 
     // devServer:{type:Object} 3个属性host,port,https
@@ -105,13 +105,16 @@ module.exports = {
         // proxy: 'http://localhost:4000' // 配置跨域处理,只有一个代理
         proxy: {
             '/api': {
-                target: '<url>',
+                target: 'http://localhost:7075',
                 ws: true,
-                changeOrigin: true
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/api': '',
+                },
             },
             '/foo': {
-                target: '<other_url>'
-            }
+                target: '<other_url>',
+            },
         },  // 配置多个代理
     },
 
@@ -124,4 +127,4 @@ module.exports = {
     // 可以用来传递任何第三方插件选项
     pluginOptions: {},
 
-}
+};

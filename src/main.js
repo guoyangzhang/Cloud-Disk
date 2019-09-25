@@ -7,18 +7,35 @@ import utils from '@/utils/common/index';
 import router from './router';
 import api from '@/conf/api/index';
 import ElementUI from 'element-ui';
+import treeDemo from '@/conf/api/tree';
+import axios from 'axios';
+
 // import 'element-ui/lib/theme-chalk/index.css'; //在 APP.vue中加入主题
 // 加载其他第三方库
 import App from './App';
 import store from './store';
 import '@/filters/index';
 import codes from './conf/basedata/codes';
+
 // 树组件
 // import TydicGaUI from 'tydic-ga-ui';
 // import 'tydic-ga-ui/css/tydic-ga-ui.css';
 // import laydate from '../lib/laydate/laydate.js';
+
+import vueztree from 'vue-ztree-2.0/dist/vue-ztree-2.0.umd.min.js';
+
+import globalUploader from '@/components/GlobalUploader.vue';
+
+import 'vue-ztree-2.0/dist/vue-ztree-2.0.css';
+
 // XXX 发布时自动排除引用
 import '@/conf/config';
+
+Vue.use(vueztree);
+
+Vue.use(globalUploader);
+
+Vue.prototype.axios = axios;
 
 Vue.use(ElementUI);
 // Vue.use(TydicGaUI);
@@ -28,7 +45,7 @@ Vue.config.productionTip = false;
 Object.defineProperty(Vue.prototype, 'codes', {
     get() {
         return codes;
-    }
+    },
 });
 
 // Object.defineProperty(Vue.prototype, '$laydate', {
@@ -39,26 +56,31 @@ Object.defineProperty(Vue.prototype, 'codes', {
 Object.defineProperty(Vue.prototype, '$api', {
     get() {
         return api;
-    }
+    },
 });
 
 Object.defineProperty(Vue.prototype, '$backend', {
     get() {
         return backend;
-    }
+    },
 });
 
 Object.defineProperty(Vue.prototype, '$utils', {
     get() {
         return utils;
-    }
+    },
 });
 
+Object.defineProperty(Vue.prototype, '$treeDemo', {
+    get() {
+        return treeDemo;
+    },
+});
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
     router,
     store,
     components: { App },
-    template: '<App/>'
+    template: '<App/>',
 });

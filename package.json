@@ -7,17 +7,23 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "fix-memory-limit": "cross-env LIMIT=4096 increase-memory-limit"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
+    "cross-env": "^5.2.0",
     "crypto-js": "^3.1.9-1",
     "echarts": "^4.2.0-rc.2",
     "element-ui": "^2.4.11",
-    "jquery": "^3.3.1",
+    "increase-memory-limit": "^1.0.7",
+    "jquery": "^3.4.1",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vue-simple-uploader": "^0.7.2",
+    "vue-ztree-2.0": "^1.0.4",
+    "vuex": "^3.0.1",
+    "ztree": "^3.5.24"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.2.0",

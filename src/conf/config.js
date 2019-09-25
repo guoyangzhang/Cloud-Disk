@@ -4,9 +4,9 @@ window.config = {
 
     servers: {
         // 必须和浏览器打开的ip端口相同
-        default: 'http://localhost:3010/appName',
-        wp: 'http://localhost:3010/wp/', // 平台门户登录模拟
-        uc: 'http://localhost:3010/uc'   // UC模拟单点并获取用户信息
+        default: 'http://localhost:7075/service-B', // 本地 打开本地  ``` node ./server/app.js ``` 启动
+        // wp: 'http://localhost:3010/wp/', // 平台门户登录模拟
+        // uc: 'http://localhost:3010/uc'   // UC模拟单点并获取用户信息
     },
 
     // webSocket 映射地址，必须和浏览器打开的ip端口相同

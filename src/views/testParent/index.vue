@@ -1,9 +1,4 @@
-<!--
-    文件：src/views/testParent/index.vue
-    作者：沈旭东
-    时间：2018-12-06
-    描述：测试父子组件 - 父组件
--->
+
 <template>
     <div>
         <div>父组件:张三</div>

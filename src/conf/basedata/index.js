@@ -1,35 +1,29 @@
-/**
-    文件：conf/basedata/index.js
-    作者：Bing.Wu
-    时间：2017-5-31
-    描述：基础数据
-*/
 import backend from '@/utils/backend'
 import api from '@/conf/api'
 import codes from './codes'
 
-let isLoad = false
+let isLoad = false;
 
-const codeMap = new Map()
-const typeMap = new Map()
+const codeMap = new Map();
+const typeMap = new Map();
 
 /**
  * 初始化
  */
 function init (data) {
     if (!data) {
-        throw new Error('基础数据为空')
+        throw new Error('基础数据为空');
     }
-    isLoad = true
+    isLoad = true;
     data.forEach(item => {
         if (codeMap.has(item.code)) {
-            throw new Error('字典表code重复!')
+            throw new Error('字典表code重复!');
         }
-        codeMap.set(item.code, item)
+        codeMap.set(item.code, item);
         if (!typeMap.has(item.type)) {
-            typeMap.set(item.type, [])
+            typeMap.set(item.type, []);
         }
-        typeMap.get(item.type).push(item)
+        typeMap.get(item.type).push(item);
     })
 }
 
@@ -39,18 +33,18 @@ const basedata = {
      */
     getByType (type) {
         if (typeMap.has(type)) {
-            return typeMap.get(type)
+            return typeMap.get(type);
         }
-        return []
+        return [];
     },
     /**
      * 根据Code获取
      */
     get (code) {
         if (codeMap.has(code)) {
-            return codeMap.get(code)
+            return codeMap.get(code);
         }
-        return null
+        return null;
     },
     /**
      * 请求后端数据
@@ -58,24 +52,24 @@ const basedata = {
     request () {
         return backend.request(api.basedata.getDataDict).then(result => {
             if (result.success) {
-                init(result.data)
+                init(result.data);
             } else {
-                return Promise.reject(result)
+                return Promise.reject(result);
             }
         }, error => {
-            let err = backend.convertError(error)
-            return Promise.reject(err)
-        })
+            let err = backend.convertError(error);
+            return Promise.reject(err);
+        });
     },
     /**
      * 是否加载完成
      */
     isLoad () {
-        return isLoad
+        return isLoad;
     }
-}
+};
 
 module.exports = {
     basedata,
     codes
-}
+};
