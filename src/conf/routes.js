@@ -37,6 +37,11 @@ export default [
         'label': '点击按钮上传'
     },
     {
+        'path': 'vue-simple-uploader',
+        'component': 'vue-simple-uploader/index',
+        'label': '点击按钮上传'
+    },
+    {
         'path': 'testParent',
         'component': 'testParent/index',
         'label': '测试父子组件'

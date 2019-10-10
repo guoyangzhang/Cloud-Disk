@@ -1,151 +1,99 @@
-<!--
-    文件：src/views/testCom/index.vue
-    作者：沈旭东
-    时间：2018-12-07
-    描述：测试组件
--->
 <template>
-    <div class="testCom">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="Vue组件" name="first">
-                <AppComponent-Vue/>
-            </el-tab-pane>
+    <div class="overall">
+        <div class="img-container"><img src="../vue-simple-uploader/images/text-icon.png"/></div>
+        <div><i>网</i></div>
+        </div>
 
-            <el-tab-pane label="JS组件" name="second">
-                <AppComponent-JS/>
-            </el-tab-pane>
-
-            <el-tab-pane label="切换组件 If/else" name="third">
-                <div class="title">
-                    <el-button @click="onClick1">切换组件</el-button>
-                </div>
-                <vue1 v-if="isShowVue"></vue1>
-                <vue2 v-else></vue2>
-            </el-tab-pane>
-
-            <el-tab-pane label="切换组件component" name="fourth">
-                <div class="title">
-                    <el-button @click="onClick2">切换组件</el-button>
-                </div>
-                <component :is="computeComp"></component>
-            </el-tab-pane>
-
-            <el-tab-pane label="父子传值" name="five">
-                <parent1></parent1>
-            </el-tab-pane>
-
-            <el-tab-pane label="slot插槽" name="six">
-                <h3>dialog弹窗，vue动画</h3>
-                <el-button @click="onOpenDialog">打开Dialog</el-button>
-                <dialogCom v-model="isShowDialog" :isTween="true" :keepShow="true">
-                    <div class="dialogPage page">
-                        <h1>Hello World</h1>
-                    </div>
-                </dialogCom>
-            </el-tab-pane>
-        </el-tabs>
     </div>
 </template>
 
 <script>
-    import AppComponentVue from './AppComponent.vue';
-    import AppComponentJS from './AppComponent.js';
-    import vue1 from './widget/vue1';
-    import vue2 from './widget/vue2';
-    import vue3 from './widget/vue3';
-    import vue4 from './widget/vue4';
-    import parent1 from './widget2/parent1';
-    import dialogCom from './dialogCom';
+    // 安装 npm install --save vue-slicksort
+    import { SlickList, SlickItem } from 'vue-slicksort';
 
     export default {
         components: {
-            'AppComponent-Vue': AppComponentVue,
-            'AppComponent-JS': AppComponentJS,
-            vue1,
-            vue2,
-            vue3,
-            vue4,
-            parent1,
-            dialogCom,
+            SlickItem,
+            SlickList,
         },
-        data () {
+        data() {
             return {
-                activeName: 'first',
-                isShowVue: true,
-                vueIndex: 1,
-                isShowDialog: false,
+                flag: true,
+                items: [
+                    {
+                        name: 'Tab-1',
+                        itemArr: ['1-1', '1-2', '1-3'],
+                    },
+                    {
+                        name: 'Tab-2',
+                        itemArr: ['2-1', '2-2', '2-3'],
+                    },
+                    {
+                        name: 'Tab-3',
+                        itemArr: ['3-1', '3-2', '3-3'],
+                    },
+                ],
             };
         },
-        computed: {
-            computeComp () {
-                switch (this.vueIndex) {
-                    case 4:
-                        return 'vue4';
-                    case 3:
-                        return 'vue3';
-                    case 2:
-                        return 'vue2';
-                    case 1:
-                    default:
-                        return 'vue1';
-                }
-            }
-        },
-        async mounted () {
-
-        },
         methods: {
-            /**
-             * 点击切换组件
-             */
-            onClick1 () {
-                this.isShowVue = !this.isShowVue;
+            getChangeList(val) {
+                console.log(val, '二级');
             },
-            /**
-             * 切换动态组件
-             */
-            onClick2 () {
-                this.vueIndex++;
-                if (this.vueIndex > 4) {
-                    this.vueIndex = 1;
-                }
+            getChangeLists(vals) {
+                //  拖拽完成后返回被打乱后的顺序
+                console.log(vals, '一级');
             },
-            /**
-             * 切换选项卡
-             * @param tab
-             * @param event
-             */
-            handleClick (tab, event) {
-                // console.log(tab, event);
-            },
-            onOpenDialog () {
-                this.isShowDialog = true;
-            }
-        }
+        },
     };
 </script>
+<style lang="scss" scoped>
+    .list {
+        width: 100%;
+        max-height: 80vh;
+        margin: 0 auto;
+        padding: 0;
+        overflow: auto;
+        background-color: #f3f3f3;
+    }
 
-<style lang="scss">
-    $dialog_width: 500px;
-    $dialog_height: 400px;
+    .list-item {
+        width: 100%;
+        //   padding: 20px;
+        background-color: #fff;
+        box-sizing: border-box;
+        color: #333;
+        font-weight: 400;
+        text-align: center;
+        padding: 20px;
+        box-shadow: 0 1px 2px #ccc;
+    }
 
-    .testCom {
+    .SortableList {
+        display: flex;
+        width: 600px;
+        max-height: 90vh;
+        margin: 0 auto;
+        background-color: #dfdbdb;
+
+    }
+
+    .SortableItem {
+        text-align: center;
+        width: 100%;
+        background-color: #fff;
+        box-sizing: border-box;
+        user-select: none; //不允许用户选中文字
+        color: #333;
+        font-weight: 400;
+        position: relative;
+        box-shadow: 0 1px 2px #ccc;
         .title {
-            background-color: #eee;
-        }
-
-        .dialogPage {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            margin-left: -$dialog_width/2;
-            margin-top: -$dialog_height/2;
-        }
-
-        .page {
-            background-color: #fff;
-            width: $dialog_width;
-            height: $dialog_height;
+            height: 50px;
+            width: 100%;
+            background: rgba(11, 145, 71, 0.658);
+            color: white;
+            font-weight: bold;
+            line-height: 50px;
         }
     }
 </style>

@@ -1,9 +1,3 @@
-<!--
-    文件：src/views/home/index.vue
-    作者：沈旭东
-    时间：2018-04-17
-    描述：主页面
--->
 <template>
     <div class="home">
         <!--使用router-link跳转路由-->
@@ -27,9 +21,9 @@
             <!--</el-button>-->
 
             <!--&lt;!&ndash;组件化开发&ndash;&gt;-->
-            <!--<el-button type="primary" size="small ">-->
-            <!--<router-link class="routerLink" to="/testCom">组件化开发</router-link>-->
-            <!--</el-button>-->
+            <el-button type="primary" size="small ">
+            <router-link class="routerLink" to="/testCom">表格拖拽</router-link>
+            </el-button>
 
             <!--<el-button type="primary" size="small ">-->
             <!--<router-link class="routerLink" to="/testCom">动态组件注册</router-link>-->
@@ -43,6 +37,9 @@
                 <router-link class="routerLink"
                              :to="{path:'/bottomUpload',query:{isButton:this.isButton,chunkNum:this.chunkNum}}">上传按钮实现上传文件
                 </router-link>
+            </el-button>
+            <el-button type="primary" size="small ">
+            <router-link class="routerLink" to="/vue-simple-uploader">vue-simple-uploader</router-link>
             </el-button>
             <!--&lt;!&ndash;测试各种动态组件&ndash;&gt;-->
             <!--<el-button type="primary" size="small ">-->

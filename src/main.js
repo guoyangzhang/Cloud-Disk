@@ -24,17 +24,16 @@ import codes from './conf/basedata/codes';
 
 import vueztree from 'vue-ztree-2.0/dist/vue-ztree-2.0.umd.min.js';
 
-import globalUploader from '@/components/GlobalUploader.vue';
-
 import 'vue-ztree-2.0/dist/vue-ztree-2.0.css';
+
+import uploader from 'vue-simple-uploader/dist/vue-uploader';
 
 // XXX 发布时自动排除引用
 import '@/conf/config';
 
 Vue.use(vueztree);
 
-Vue.use(globalUploader);
-
+Vue.use(uploader);
 Vue.prototype.axios = axios;
 
 Vue.use(ElementUI);

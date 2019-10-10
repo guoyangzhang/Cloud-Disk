@@ -119,7 +119,7 @@
                     contentType: 'application/json;',
                     dataType: 'json',
                     type: 'POST',
-                    url: 'http://localhost:7075/service-B/fileUpload/checkFileMd5',
+                    url: '/api/service-B/fileUpload/checkFileMd5',
                     data: JSON.stringify({ 'guid': md5 }),
                     success: function (res) {
                         var start = parseInt(res.data);
@@ -191,7 +191,7 @@
                 fd.append('fileName', fileObj.name);
                 // POST表单数据
                 let xhr = new XMLHttpRequest();
-                xhr.open('post', 'http://localhost:7075/service-B/fileUpload/uploadNoChunk', true);
+                xhr.open('post', '/api/service-B/fileUpload/uploadNoChunk', true);
                 xhr.send(fd);
                 xhr.onload = function () {
                     if (this.readyState === 4 && this.status === 200) {
@@ -218,7 +218,7 @@
                         dataType: 'json',
                         type: 'POST',
                         async: false,
-                        url: 'http://localhost:7075/service-B/fileUpload/mergeFile',
+                        url: '/api/service-B/fileUpload/mergeFile',
                         data: JSON.stringify({
                             'guid': md5,
                             'pathUrl': path,
@@ -264,7 +264,7 @@
                                 dataType: 'json',
                                 type: 'POST',
                                 async: false,
-                                url: 'http://localhost:7075/service-B/dragFile/add',
+                                url: '/api/service-B/dragFile/add',
                                 data: JSON.stringify(objList),
                                 success: function (res) {
                                     self.OnQueryTree(node[0].rootName);
@@ -289,7 +289,7 @@
                         dataType: 'json',
                         type: 'POST',
                         async: false,
-                        url: 'http://localhost:7075/service-B/fileUpload/delList',
+                        url: '/api/service-B/fileUpload/delList',
                         data: JSON.stringify(dataList),
                         success: function (res) {
                             self.exampleList = [];
@@ -388,7 +388,7 @@
                 this.exampleList = [];
                 this.axios({
                     method: 'post',
-                    url: 'http://localhost:7075/service-B/dragFile/selectList',
+                    url: '/api/service-B/dragFile/selectList',
                     data: {
                         'rootName': str,
                     },
@@ -439,7 +439,7 @@
                     contentType: 'application/json;',
                     dataType: 'json',
                     type: 'POST',
-                    url: 'http://localhost:7075/service-B/dragFile/addNode',
+                    url: '/api/service-B/dragFile/addNode',
                     data: JSON.stringify({
                         parentId: parentId,
                         name: name,
@@ -530,7 +530,7 @@
                     contentType: 'application/json;',
                     dataType: 'json',
                     type: 'POST',
-                    url: 'http://localhost:7075/service-B/dragFile/updateTree',
+                    url: '/api/service-B/dragFile/updateTree',
                     data: JSON.stringify({
                         guid: treeId,
                         name: newName,
@@ -686,7 +686,7 @@
                                 contentType: 'application/json',
                                 dataType: 'json',
                                 type: 'POST',
-                                url: 'http://localhost:7075/service-B/dragFile/dragTree',
+                                url: '/api/service-B/dragFile/dragTree',
                                 data: JSON.stringify(dateList),
                                 success: function (res) {
                                     self.fileList = aaList;
